@@ -13,6 +13,8 @@ public class _04_RemovingStuffFromArrayLists {
 
 		class Stuff {
 			public String type;
+
+			
 		}
 		class Worm extends Stuff {
 			public Worm() {
@@ -35,7 +37,11 @@ public class _04_RemovingStuffFromArrayLists {
 		System.out.println(stuffIFoundInTheYard.size());
 
 		/* TODO 1: Clean out the dirt but keep the delicious worms. */
-		
+	for (int i=0;i<stuffIFoundInTheYard.size();i++) {
+		for(int ii=0;ii<stuffIFoundInTheYard.get(i).;i++) {
+			
+		}
+	}
 		
 		
 		
