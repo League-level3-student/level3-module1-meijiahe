@@ -42,7 +42,7 @@ class Beatle {
 	public Beatle(String name) {
 		this.name = name;
 		initializePlateOfChips();
-	}
+	}          
 
 	private void initializePlateOfChips() {
 		int numberOfChips = new Random().nextInt(100);
