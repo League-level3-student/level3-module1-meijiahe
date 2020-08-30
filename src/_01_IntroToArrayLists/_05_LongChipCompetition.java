@@ -13,10 +13,10 @@ public class _05_LongChipCompetition {
 	 * initialize The Beatles before you start your search. *
 	 **/
 	private ArrayList<Beatle> theBeatles = new ArrayList<Beatle>();
-
-	public static void main(String[] args) {
+		public static void main(String[] args) {
 		_05_LongChipCompetition lcc = new _05_LongChipCompetition();
-		
+		lcc.initializeBeatles();
+		lcc.findTheLongChip();
 	}
 	
 	private void initializeBeatles() {
@@ -33,8 +33,21 @@ public class _05_LongChipCompetition {
 	public ArrayList<Beatle> getTheBand(){
 		return theBeatles;
 	}
-}
 
+	private void findTheLongChip() {
+		double length=0;
+		String name="";
+		for(int i=0;i<theBeatles.size();i++) {
+			for(int ii=0;ii<theBeatles.get(i).getChips().size();ii++) {	
+				if (theBeatles.get(i).getChips().get(ii).getLength()>length) {
+					length=theBeatles.get(i).getChips().get(ii).getLength();
+					name=theBeatles.get(i).getName();
+				}
+				}
+			}
+		System.out.println(name);
+		}
+	}
 class Beatle {
 	private String name;
 	private ArrayList<Chip> chips = new ArrayList<Chip>();
