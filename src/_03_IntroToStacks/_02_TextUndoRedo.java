@@ -1,11 +1,20 @@
 package _03_IntroToStacks;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.Stack;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class _02_TextUndoRedo {
-	/* 
+import _01_IntroToArrayLists.Song;
+
+public class _02_TextUndoRedo implements KeyListener {
+	public _02_TextUndoRedo () {
+		/* 
 	 * Create a JFrame with a JPanel and a JLabel.
 	 * 
 	 * Every time a key is pressed, add that character to the JLabel. It should look like a basic text editor.
@@ -17,16 +26,58 @@ public class _02_TextUndoRedo {
 	 * off the Stack and added back to the JLabel.
 	 * 
 	 * */
-	
-	public static void main(String[] args) {
-		JFrame jframe = new JFrame();
+		run();
+	}
+	 int frameWidth = 1000;
+	    int frameHeight = 1000;
+	    JButton button = new JButton();
+	    JFrame jframe = new JFrame();
 		JPanel jpanel = new JPanel();
 		JLabel jlabel = new JLabel();
+		Stack<Character> characters = new Stack<Character>();
+	public static void main(String[] args) {
+		new _02_TextUndoRedo();
 		
 	}
 		
 	public void run () {
+		 jframe.addKeyListener(this);
+		 jpanel.add(button);
+		 jpanel.add(jlabel);
+		 jframe.add(jpanel);
+		 button.addKeyListener(this);
+		 jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	   	 jframe.setVisible(true);
+	   	 jframe.pack();
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
-	
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+		System.out.println(e.getKeyCode());
+		if(e.getKeyCode()==8) {
+			characters.push(jlabel.getText().charAt(jlabel.getText().length()-1));
+			String text=jlabel.getText().substring(0,jlabel.getText().length()-1);
+			jlabel.setText(text);
+		}
+		else {
+			jlabel.setText(jlabel.getText()+e.getKeyChar());
+			jframe.pack();	
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
+
+	
