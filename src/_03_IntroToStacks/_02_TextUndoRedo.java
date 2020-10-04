@@ -62,7 +62,7 @@ public class _02_TextUndoRedo implements KeyListener {
 		// TODO Auto-generated method stub
 		
 		System.out.println(e.getKeyCode());
-		if(e.getKeyCode()==8) {
+		if(e.getKeyCode()==8&&jlabel.getText().length()>0) { 
 			characters.push(jlabel.getText().charAt(jlabel.getText().length()-1));
 			String text=jlabel.getText().substring(0,jlabel.getText().length()-1);
 			jlabel.setText(text);
@@ -70,6 +70,11 @@ public class _02_TextUndoRedo implements KeyListener {
 		else {
 			jlabel.setText(jlabel.getText()+e.getKeyChar());
 			jframe.pack();	
+		}
+		
+		if(e.getKeyCode()==66&&characters.size()>0) {
+			Character topc = characters.pop();
+			jlabel.setText(jlabel.getText()+topc);
 		}
 	}
 
