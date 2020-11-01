@@ -1,7 +1,46 @@
 package _06_Intro_To_Hash_Maps;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.HashMap;
 
-public class _02_LogSearch {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class _02_LogSearch implements KeyListener {
+	
+	public _02_LogSearch () {
+		run();
+	}
+	
+	HashMap <Integer, String> logs = new HashMap <Integer, String> ();
+	JFrame frame = new JFrame();
+	JButton entryb = new JButton();
+	JButton idb = new JButton();
+	JButton viewb = new JButton();
+	JPanel panel = new JPanel();
+	JLabel label = new JLabel();
+	public static void main(String[] args) {
+		new _02_LogSearch ();
+	}
+	
+	public void run(){
+		frame.addKeyListener(this);
+		panel.add(entryb);
+		panel.add(idb);
+		panel.add(viewb);
+		panel.add(label);
+		frame.add(panel);
+		entryb.addKeyListener(this);
+		idb.addKeyListener(this);
+		viewb.addKeyListener(this);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setVisible(true);
+		frame.pack();
+		
+	}
   /* 
 	 * Crate a HashMap of Integers for the keys and Strings for the values.
 	 * Create a GUI with three buttons. 
@@ -29,5 +68,20 @@ public class _02_LogSearch {
 	 * 				is not in the list. 
 	 *
 	 * */
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
