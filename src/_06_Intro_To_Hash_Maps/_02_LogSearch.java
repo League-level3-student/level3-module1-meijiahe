@@ -2,14 +2,17 @@ package _06_Intro_To_Hash_Maps;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class _02_LogSearch implements KeyListener {
+public class _02_LogSearch implements MouseListener {
 	
 	public _02_LogSearch () {
 		run();
@@ -20,6 +23,7 @@ public class _02_LogSearch implements KeyListener {
 	JButton entryb = new JButton();
 	JButton idb = new JButton();
 	JButton viewb = new JButton();
+	JButton renb = new JButton();
 	JPanel panel = new JPanel();
 	JLabel label = new JLabel();
 	public static void main(String[] args) {
@@ -27,15 +31,17 @@ public class _02_LogSearch implements KeyListener {
 	}
 	
 	public void run(){
-		frame.addKeyListener(this);
+		frame.addMouseListener(this);
 		panel.add(entryb);
 		panel.add(idb);
+		panel.add(renb);
 		panel.add(viewb);
 		panel.add(label);
 		frame.add(panel);
-		entryb.addKeyListener(this);
-		idb.addKeyListener(this);
-		viewb.addKeyListener(this);
+		entryb.addMouseListener(this);
+		idb.addMouseListener(this);
+		renb.addMouseListener(this);
+		viewb.addMouseListener(this);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.pack();
@@ -68,20 +74,74 @@ public class _02_LogSearch implements KeyListener {
 	 * 				is not in the list. 
 	 *
 	 * */
+
 	@Override
-	public void keyTyped(KeyEvent e) {
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+		if (e.getSource() == entryb) {
+			String idn = JOptionPane.showInputDialog(null, "Enter your ID number.");
+			String name = JOptionPane.showInputDialog(null,"Enter your name please.");
+			int idnn = Integer.parseInt(idn);
+			logs.put(idnn, name);
+		}
+		
+		if (e.getSource()==idb) {
+			String check = JOptionPane.showInputDialog(null, "Enter ID Number.");
+			int cck = Integer.parseInt(check);
+			if (logs.get(cck)!= null) {
+				JOptionPane.showMessageDialog(null,"ID: "+ cck + " Name: " + logs.get(cck)+"");
+			}
+			else {
+				JOptionPane.showInputDialog(null, "Not exist.");
+			}
+		}
+		
+		if (e.getSource()==viewb) {
+			String message="";
+			for (int key:logs.keySet()) {
+				message+="ID: "+ key + " Name: " + logs.get(key)+"\n";
+			}
+			JOptionPane.showMessageDialog(null, message);
+		}
+		
+		if (e.getSource()==renb) {
+			String re = JOptionPane.showInputDialog(null, "ENTER UR ID");
+			int rr = Integer.parseInt(re);
+			if (logs.get(rr)!= null) {
+				logs.put(rr, null);
+			}
+			else { 
+				JOptionPane.showInputDialog(null, "ID is not in the list. ");
+			}
+		}
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
 	@Override
-	public void keyReleased(KeyEvent e) {
+	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 	
 }
